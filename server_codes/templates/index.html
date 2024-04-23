@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Data Display</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles (1).css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ESP32 Data Display</h1>
+        <div class="data">
+            <p id="heart-rate">Heart Rate: </p>
+            <p id="temperature">Temperature: </p>
+            <!-- Additional display for sensor data -->
+            <!-- <div id="sensor-data"></div> -->
+        </div>
+        <!-- Removed the graph section -->
+        <div class="video-container">
+            <img src="/video_feed" width="450" height="350">
+        </div>
+    </div>
+    <!-- Removed the chart.js script -->
+    <script>
+        // Function to update displayed sensor data
+        function updateData(heartRate, temperature) {
+            document.getElementById('heart-rate').innerText = Heart Rate: ${heartRate};
+            document.getElementById('temperature').innerText = Temperature: ${temperature};
+        }
+
+        // Function to fetch data from server
+        function fetchData() {
+            fetch('/data')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Log the received data
+                    const { heartRate, temperature } = data;
+                    updateData(heartRate, temperature);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Call fetchData initially and every second thereafter
+        fetchData();
+        setInterval(fetchData, 1000); // Update data every second
+    </script>
+</body>
+</html>

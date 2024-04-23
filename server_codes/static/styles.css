@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.data {
+    margin-bottom: 20px;
+}
+
+.data p {
+    display: inline-block;
+    background-color: grey;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.graph {
+    margin-top: 20px;
+}
+.video-container {
+    position: absolute;
+    top: 155px;
+    right: 500px;
+    width: 450px;
+    height: 350px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
